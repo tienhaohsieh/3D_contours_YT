@@ -26,7 +26,7 @@ for im in im_li:
     zoom_data.ra_lim=[52.26366592,52.26811729]
     zoom_data.dec_lim=[31.2656986,31.26924292]
     print(zoom_data.v_idx,zoom_data.ra_idx,zoom_data.dec_idx)
-    sm_data=gaussian_filter(zoom_data.trimed_data, sigma=2)
+    sm_data=gaussian_filter(zoom_data.trimed_data, sigma=1)
     data=dict(density = (sm_data, "g/cm**3"))
 #    bbox = np.array([zoom_data.b_v(), zoom_data.b_dec(), zoom_data.b_ra()])
     bbox = np.array([[-1.5,1.5],[-1.5,1.5],[-1.5,1.5]])
@@ -38,9 +38,9 @@ for im in im_li:
     source = sc[0]
     source.set_field('density')
     source.set_log(True)
-    bounds=(0.2,0.4)
+    bounds=(0.15,0.3)
     tf = yt.ColorTransferFunction(np.log10(bounds))
-    tf.add_layers(5, w=0.0001, colormap='autumn',alpha=logspace(-0.1,0,12))
+    tf.add_layers(5, w=0.0001, colormap='arbre',alpha=logspace(-0.1,0,12))
     source.tfh.tf = tf
     source.tfh.bounds = bounds
     source.tfh.plot('transfer_function.png', profile_field='density')
