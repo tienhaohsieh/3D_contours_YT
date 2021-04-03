@@ -53,6 +53,7 @@ for im in im_li:
     cam.switch_orientation((0.5,1.,1.))
 
     steps=20
+    system('rm -rf PNG/*.png')
     for x in arange(steps):
         cam.rotate(2*pi/steps,rot_vector=np.array([1.0, 0.0, 0.0]))
         sc.save('rendering'+'%d'%x+'.png', sigma_clip=2)
