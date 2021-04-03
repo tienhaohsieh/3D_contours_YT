@@ -1,8 +1,6 @@
 # 3D_contours_YT
 
-
-A simple tool to visual the disk velocity at the line of sight. The model takes a simple thin disk with a Keplerian velocity field. 
-
+Visualiing 3D data cube using python.
 To run it, set the data path, map and velocity range and type >> python Plot3D.py
 
 The script reads fits file with axes of RA, Dec, and velocity.
