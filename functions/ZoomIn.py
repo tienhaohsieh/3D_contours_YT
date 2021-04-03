@@ -1,4 +1,4 @@
-#! bin/python
+#! /usr/bin/python
 from numpy import *
 from header import *
 
@@ -15,12 +15,14 @@ class Zoom():
         self.header=header
         self.vel_li=read_wave(self.header)[2]
         self.ra_li,self.dec_li=read_wcs_coord2(self.header)
-
-        self.v_idx=[argmin(abs(self.vel_li-self.vel_lim[0])),argmin(abs(self.vel_li-self.vel_lim[1]))]
-        self.ra_idx=[argmin(abs(self.ra_li-self.ra_lim[0])),argmin(abs(self.ra_li-self.ra_lim[1]))][::-1]
-        self.dec_idx=[argmin(abs(self.dec_li-self.dec_lim[0])),argmin(abs(self.dec_li-self.dec_lim[1]))]
-
-        self.trimed_data=self.arr[self.v_idx[0]:self.v_idx[1],self.dec_idx[0]:self.dec_idx[1],self.ra_idx[0]:self.ra_idx[1]]
+    def v_idx(self):
+        return [argmin(abs(self.vel_li-self.vel_lim[0])),argmin(abs(self.vel_li-self.vel_lim[1]))]
+    def ra_idx(self):
+        return [argmin(abs(self.ra_li-self.ra_lim[0])),argmin(abs(self.ra_li-self.ra_lim[1]))][::-1]
+    def dec_idx(self):
+        return [argmin(abs(self.dec_li-self.dec_lim[0])),argmin(abs(self.dec_li-self.dec_lim[1]))]
+    def trimed_data(self):
+        return self.arr[self.v_idx()[0]:self.v_idx()[1],self.dec_idx()[0]:self.dec_idx()[1],self.ra_idx()[0]:self.ra_idx()[1]]
     def bound(self,li,idx_li):
         idx_st=idx_li[0]
         idx_end=idx_li[1]

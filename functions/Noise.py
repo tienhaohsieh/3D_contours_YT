@@ -1,4 +1,4 @@
-#! bin/python
+#! /usr/bin/python
 from scipy.optimize import curve_fit
 from pylab import *
 from numpy import *

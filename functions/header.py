@@ -1,4 +1,4 @@
-#! bin/python
+#! /usr/bin/python
 from numpy import *
 from astropy import constants as con
 from os import sys
